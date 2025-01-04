@@ -63,13 +63,21 @@ for(var i=0;i<5;i++){
 function x(){
     var a =8;
     function y(num){
-        console.log('y getting',num,'--',a);
+        console.log('y getting',num,'--',a++);
+        return 0;
     }
 return y;
 }
 
 var z = x();
 var m = x();
-console.log('z',z);
-console.log('m',m);
-
+z(11);
+m(22);
+m(22);
+m(22);
+z(11);
+console.log('z',z(11));
+console.log('m',m(22));
+console.log('m',m(22));
+console.log('m',m(22));
+console.log('z',z(11));
