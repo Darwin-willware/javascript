@@ -49,16 +49,16 @@ function getScore(){
 
     return add();
 }
-// console.log(getScore());
+console.log(getScore());
 
-// for(let i=0;i<5;i++){
-//     setTimeout(()=>{console.log("arrow function",i)},i*1000);
-//     setTimeout(function (){console.log(" function",i)},i*1000);
-// }
-// for(var i=0;i<5;i++){
-//     setTimeout(()=>{console.log("var arrow function",i)},i*1000);
-//     setTimeout(function (){console.log("var function",i)},i*1000);
-// }
+for(let i=0;i<5;i++){
+    setTimeout(()=>{console.log("arrow function",i)},i*1000);
+    setTimeout(function (){console.log(" function",i)},i*1000);
+}
+for(var i=0;i<5;i++){
+    setTimeout(()=>{console.log("var arrow function",i)},i*1000);
+    setTimeout(function (){console.log("var function",i)},i*1000);
+}
 
 function x(){
     var a =8;
