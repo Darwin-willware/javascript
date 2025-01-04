@@ -49,28 +49,32 @@ function getScore(){
 
     return add();
 }
-console.log(getScore());
+// console.log(getScore());
 
-for(let i=0;i<5;i++){
-    setTimeout(()=>{console.log("arrow function",i)},i*1000);
-    setTimeout(function (){console.log(" function",i)},i*1000);
-}
-for(var i=0;i<5;i++){
-    setTimeout(()=>{console.log("var arrow function",i)},i*1000);
-    setTimeout(function (){console.log("var function",i)},i*1000);
-}
+// for(let i=0;i<5;i++){
+//     setTimeout(()=>{console.log("arrow function",i)},i*1000);
+//     setTimeout(function (){console.log(" function",i)},i*1000);
+// }
+// for(var i=0;i<5;i++){
+//     setTimeout(()=>{console.log("var arrow function",i)},i*1000);
+//     setTimeout(function (){console.log("var function",i)},i*1000);
+// }
 
 function x(){
     var a =8;
     function y(num){
-        console.log('y getting',num,'--',a++);
+        console.log('y getting',num,'--',++a);
         return 0;
     }
 return y;
 }
 
+function checker(){
+    let b= 10;
+    console.log('tester',b++);
+}
 var z = x();
-var m = x();
+let m = x();
 z(11);
 m(22);
 m(22);
@@ -81,3 +85,12 @@ console.log('m',m(22));
 console.log('m',m(22));
 console.log('m',m(22));
 console.log('z',z(11));
+
+
+var k = checker;
+
+k();
+k();
+checker();
+checker();
+
