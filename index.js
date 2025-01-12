@@ -1,96 +1,70 @@
-console.log("hello World!");
-
-const str = 'hi hello list to me some mistakes get made';
-
-const arrData = ['hi',900,'kello','pom','noset',300,700,'todo','killer'];
-
-function stringManipulation(){
-
+// params(rest) vs arguments(spread)
+// (method) Array<any>.reduce(callbackfn: (previousValue: any, currentValue: any, currentIndex: number, array: any[]) => any, initialValue: any): any (+2 overloads)
+function multiply(...nums) {
+    return nums.reduce((product, num) => product * num, 1);
 }
 
-//function Declaration
-function arrayManipulation(){
-console.log(arrData.values());
-console.log(arrData.keys())
+const arr = [5, 6, 2, 3]; 
+
+console.log(multiply(...arr));
+
+
+//Rest Parameter must be last formal Parameter
+// const fn = (a,x,y,...nums,j,i,k) =>{
+//     console.log(x,y);
+// }
+
+const refactored = (a,x,y,j,i,k,...nums)=>{
+    console.log(x,y);
 }
+refactored(1,2,3,4,5,6,7,8,9,0,1,1,1,2);
 
-//function Expression
-const callFunc = function(num){
-    return num*num;
+
+//callBack Functions
+
+function greetMe(name){
+    console.log('Hi!',name);
 }
-console.log(callFunc(8));
-
-//In A language where a function can be treated as variables are called as first order functions
-//in these cases a function can be passed to any other function and can be returned from a function so we are treating it as a variable
-function firstOrder(fn,int){
-    console.log(fn(int));
-}
-firstOrder(callFunc,35);
-
-//IIFE  Immediately invokable function Expression
-(function square(num){console.log(num+num)}(34));
-
-(function (x){ return (function (y){console.log(x)})(2)})(1);
-
-//closures
-var num1 =20,num2=30,name='G7 Animator';
-
-function multiply(){
-    return num1*num2;
+function scoldMe(name){
+    console.log('Hi stupid !',name);
 }
 
 
-console.log(multiply());
-function getScore(){
-    var num1=2,num2=7;
-    function add(){
-        return name+' scored '+(num1+num2);
+function callGreet(callBack){
+    var name = 'Hello Moto';
+    callBack(name);
+}
+
+callGreet(greetMe);
+
+callGreet(scoldMe);
+
+
+//arrow function vs normal
+// Syntax
+// implicit Return
+//Arguments
+//this
+x=26;
+function fn(){
+    x =23;
+    console.log(arguments,this.x);
+}
+fn(1,2,3,4,5,6,89);
+let fnArr = ()=>{ x =23; console.log(this.x)};
+fnArr(2,4,5,6,);
+
+let user ={
+    userName:'kill bill',
+    rc1:()=>{
+        console.log(this.userName);
+    },
+    rc2: function (){
+        console.log(this.userName);
     }
-
-    return add();
-}
-console.log(getScore());
-
-for(let i=0;i<5;i++){
-    setTimeout(()=>{console.log("arrow function",i)},i*1000);
-    setTimeout(function (){console.log(" function",i)},i*1000);
-}
-for(var i=0;i<5;i++){
-    setTimeout(()=>{console.log("var arrow function",i)},i*1000);
-    setTimeout(function (){console.log("var function",i)},i*1000);
 }
 
-function x(){
-    var a =8;
-    function y(num){
-        console.log('y getting',num,'--',++a);
-        return 0;
-    }
-return y;
-}
+user.rc1();
+user.rc2();
 
-function checker(){
-    let b= 10;
-    console.log('tester',b++);
-}
-var z = x();
-let m = x();
-z(11);
-m(22);
-m(22);
-m(22);
-z(11);
-console.log('z',z(11));
-console.log('m',m(22));
-console.log('m',m(22));
-console.log('m',m(22));
-console.log('z',z(11));
-
-
-var k = checker;
-
-k();
-k();
-checker();
-checker();
 
